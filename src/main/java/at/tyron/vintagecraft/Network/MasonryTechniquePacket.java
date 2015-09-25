@@ -17,8 +17,8 @@ public class MasonryTechniquePacket implements IMessage {
 	public MasonryTechniquePacket() {
 	}
 	
-	public MasonryTechniquePacket(EnumMasonryTechnique carpentryTechnique) {
-		this.masonryTechnique = carpentryTechnique;
+	public MasonryTechniquePacket(EnumMasonryTechnique masonryTechnique) {
+		this.masonryTechnique = masonryTechnique;
 	}
 
 	

@@ -5,7 +5,9 @@ import java.util.Locale;
 
 import at.tyron.vintagecraft.BlockClass.BaseBlockClass;
 import at.tyron.vintagecraft.Interfaces.IItemSmeltable;
+import at.tyron.vintagecraft.Interfaces.IItemStoneWorkable;
 import at.tyron.vintagecraft.World.BlocksVC;
+import at.tyron.vintagecraft.World.Crafting.WorkableRecipeBase;
 import at.tyron.vintagecraft.WorldProperties.Terrain.EnumRockType;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,7 +18,7 @@ import net.minecraft.util.StatCollector;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemRock extends ItemBlockVC implements IItemSmeltable {
+public class ItemRock extends ItemBlockVC implements IItemSmeltable, IItemStoneWorkable {
 
 	public ItemRock(Block block) {
 		super(block);
@@ -106,6 +108,16 @@ public class ItemRock extends ItemBlockVC implements IItemSmeltable {
 	public float getSmeltingSpeedModifier(ItemStack raw) {
 		return 1f;
 	}
+
+
+
+	public boolean isIngredient(ItemStack itemstack, ItemStack comparison, WorkableRecipeBase forrecipe) {
+		return 
+			itemstack.getItemDamage() == comparison.getItemDamage() &&
+			itemstack.stackSize == comparison.stackSize &&
+			getRockType(itemstack) == getRockType(comparison)
+		;
+	}	
 
 
 }

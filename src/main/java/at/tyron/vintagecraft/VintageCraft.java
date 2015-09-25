@@ -6,6 +6,7 @@ import at.tyron.vintagecraft.Network.AnvilTechniquePacket;
 import at.tyron.vintagecraft.Network.CarpentryTechniquePacket;
 import at.tyron.vintagecraft.Network.ChunkPutNbtPacket;
 import at.tyron.vintagecraft.Network.ChunkRemoveNbtPacket;
+import at.tyron.vintagecraft.Network.MasonryTechniquePacket;
 import at.tyron.vintagecraft.Network.MechanicalNetworkNBTPacket;
 import at.tyron.vintagecraft.Network.SoundEffectToServerPacket;
 import at.tyron.vintagecraft.Network.StartMeteorShowerPacket;
@@ -17,6 +18,7 @@ import at.tyron.vintagecraft.World.VCraftWorldSavedData;
 import at.tyron.vintagecraft.World.WindGen;
 import at.tyron.vintagecraft.World.Crafting.EnumAnvilRecipe;
 import at.tyron.vintagecraft.World.Crafting.EnumCarpentryRecipes;
+import at.tyron.vintagecraft.World.Crafting.EnumMasonryRecipes;
 import at.tyron.vintagecraft.World.Crafting.Recipes;
 import at.tyron.vintagecraft.WorldGen.DynTreeGenerators;
 import at.tyron.vintagecraft.WorldGen.WorldGenDeposits;
@@ -98,6 +100,7 @@ public class VintageCraft {
     	packetPipeline.registerMessage(StartMeteorShowerPacket.ClientHandler.class, StartMeteorShowerPacket.class, 5, Side.CLIENT);
     	packetPipeline.registerMessage(WorldDataPacket.ClientHandler.class, WorldDataPacket.class, 6, Side.CLIENT);
     	packetPipeline.registerMessage(CarpentryTechniquePacket.Handler.class, CarpentryTechniquePacket.class, 7, Side.SERVER);
+    	packetPipeline.registerMessage(MasonryTechniquePacket.Handler.class, MasonryTechniquePacket.class, 8, Side.SERVER);
     	
     	
     	BlocksVC.init();
@@ -157,6 +160,7 @@ public class VintageCraft {
 		Recipes.addRecipes();
 		EnumAnvilRecipe.registerRecipes();
 		EnumCarpentryRecipes.registerRecipes();
+		EnumMasonryRecipes.registerRecipes();
 	}
 	
 	
