@@ -7,9 +7,11 @@ import org.lwjgl.opengl.GL11;
 
 import at.tyron.vintagecraft.Inventory.ContainerAnvil;
 import at.tyron.vintagecraft.Inventory.ContainerCarpenterTable;
+import at.tyron.vintagecraft.Inventory.ContainerStonecutter;
 import at.tyron.vintagecraft.TileEntity.TEAnvil;
 import at.tyron.vintagecraft.TileEntity.TECarpenterTable;
 import at.tyron.vintagecraft.TileEntity.TENoGUIInventory;
+import at.tyron.vintagecraft.TileEntity.TEStonecutter;
 import at.tyron.vintagecraft.World.Crafting.WorkableRecipeBase;
 import at.tyron.vintagecraft.WorldProperties.EnumWorkableTechnique;
 import net.minecraft.client.Minecraft;
@@ -337,6 +339,9 @@ public abstract class GuiWorkbench extends GuiContainer {
 		}
 		if (te instanceof TECarpenterTable) {
 			return new ContainerCarpenterTable(player, (TECarpenterTable)te);
+		}
+		if (te instanceof TEStonecutter) {
+			return new ContainerStonecutter(player, (TEStonecutter)te);
 		}
 		return null;
 	}

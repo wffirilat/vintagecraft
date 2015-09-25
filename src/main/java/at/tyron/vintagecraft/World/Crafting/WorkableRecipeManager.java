@@ -9,6 +9,7 @@ import net.minecraft.item.ItemStack;
 public class WorkableRecipeManager {
 	public static WorkableRecipeManager smithing = new WorkableRecipeManager();
 	public static WorkableRecipeManager carpentry = new WorkableRecipeManager();
+	public static WorkableRecipeManager masonry = new WorkableRecipeManager();
 	
 			
 	

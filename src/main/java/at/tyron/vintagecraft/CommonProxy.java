@@ -6,11 +6,11 @@ import java.util.Hashtable;
 import at.tyron.vintagecraft.Client.Gui.GuiAnvil;
 import at.tyron.vintagecraft.Client.Gui.GuiCarpenterTable;
 import at.tyron.vintagecraft.Client.Gui.GuiForge;
+import at.tyron.vintagecraft.Client.Gui.GuiStonecutter;
 import at.tyron.vintagecraft.Client.Gui.GuiStove;
 import at.tyron.vintagecraft.Client.Gui.GuiVessel;
 import at.tyron.vintagecraft.Entity.EntityCoalPoweredMinecartVC;
 import at.tyron.vintagecraft.Entity.EntityEmptyMinecartVC;
-import at.tyron.vintagecraft.Entity.EntityMinecartVC;
 import at.tyron.vintagecraft.Entity.EntityStone;
 import at.tyron.vintagecraft.Entity.Animal.EntityCowVC;
 import at.tyron.vintagecraft.Entity.Animal.EntityForestSpider;
@@ -21,11 +21,11 @@ import at.tyron.vintagecraft.Interfaces.IStateEnum;
 import at.tyron.vintagecraft.Inventory.ContainerAnvil;
 import at.tyron.vintagecraft.Inventory.ContainerCarpenterTable;
 import at.tyron.vintagecraft.Inventory.ContainerForge;
+import at.tyron.vintagecraft.Inventory.ContainerStonecutter;
 import at.tyron.vintagecraft.Inventory.ContainerStove;
 import at.tyron.vintagecraft.Inventory.ContainerVessel;
 import at.tyron.vintagecraft.TileEntity.TEAnvil;
 import at.tyron.vintagecraft.TileEntity.TEBlastPowderSack;
-import at.tyron.vintagecraft.TileEntity.TEWoodBucket;
 import at.tyron.vintagecraft.TileEntity.TECarpenterTable;
 import at.tyron.vintagecraft.TileEntity.TECokeOvenDoor;
 import at.tyron.vintagecraft.TileEntity.TEFarmland;
@@ -36,9 +36,11 @@ import at.tyron.vintagecraft.TileEntity.TEIngotPile;
 import at.tyron.vintagecraft.TileEntity.TEOrePile;
 import at.tyron.vintagecraft.TileEntity.TESapling;
 import at.tyron.vintagecraft.TileEntity.TEStonePot;
+import at.tyron.vintagecraft.TileEntity.TEStonecutter;
 import at.tyron.vintagecraft.TileEntity.TETallMetalMold;
 import at.tyron.vintagecraft.TileEntity.TEToolRack;
 import at.tyron.vintagecraft.TileEntity.TEVessel;
+import at.tyron.vintagecraft.TileEntity.TEWoodBucket;
 import at.tyron.vintagecraft.TileEntity.TileEntityForestSpiderSpawner;
 import at.tyron.vintagecraft.TileEntity.Mechanics.TEAngledGearBox;
 import at.tyron.vintagecraft.TileEntity.Mechanics.TEAxle;
@@ -48,8 +50,6 @@ import at.tyron.vintagecraft.TileEntity.Mechanics.TEWindmillRotor;
 import at.tyron.vintagecraft.World.MechnicalNetworkManager;
 import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
-import net.minecraft.client.particle.EntityFX;
-import net.minecraft.entity.EntityList;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
@@ -57,7 +57,6 @@ import net.minecraft.stats.Achievement;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.AchievementPage;
-import net.minecraftforge.event.entity.player.AchievementEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.network.IGuiHandler;
@@ -116,6 +115,7 @@ public class CommonProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TEOrePile.class, ModInfo.ModID + ":orepile");
 		
 		GameRegistry.registerTileEntity(TECarpenterTable.class, ModInfo.ModID + ":carpentertable");
+		GameRegistry.registerTileEntity(TEStonecutter.class, ModInfo.ModID + ":stonecutter");
 		GameRegistry.registerTileEntity(TEBlastPowderSack.class, ModInfo.ModID + ":blastpowdersack");
 		GameRegistry.registerTileEntity(TEWoodBucket.class, ModInfo.ModID + ":bucket");
 	}
@@ -173,9 +173,12 @@ public class CommonProxy implements IGuiHandler {
 		if (ID == 6) {
 			return new ContainerCarpenterTable(player.inventory, (TECarpenterTable) world.getTileEntity(new BlockPos(x, y, z)));
 		}
+		if (ID == 7) {
+			return new ContainerStonecutter(player.inventory, (TEStonecutter) world.getTileEntity(new BlockPos(x, y, z)));
+		}
 		
 		return null;
-	}
+	}	
 
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
@@ -196,6 +199,9 @@ public class CommonProxy implements IGuiHandler {
 		}
 		if (ID == 6) {
 			return new GuiCarpenterTable(player.inventory, (TECarpenterTable) world.getTileEntity(new BlockPos(x, y, z)));
+		}
+		if (ID == 7) {
+			return new GuiStonecutter(player.inventory, (TEStonecutter) world.getTileEntity(new BlockPos(x, y, z)));
 		}
 
 		

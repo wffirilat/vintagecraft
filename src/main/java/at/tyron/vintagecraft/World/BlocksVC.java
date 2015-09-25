@@ -1,7 +1,6 @@
 package at.tyron.vintagecraft.World;
 
 import at.tyron.vintagecraft.VintageCraft;
-import at.tyron.vintagecraft.Block.BlockWoodBucketVC;
 import at.tyron.vintagecraft.Block.BlockCobblestone;
 import at.tyron.vintagecraft.Block.BlockContainerVC;
 import at.tyron.vintagecraft.Block.BlockFireBrick;
@@ -16,6 +15,7 @@ import at.tyron.vintagecraft.Block.BlockSaltpeter;
 import at.tyron.vintagecraft.Block.BlockSandVC;
 import at.tyron.vintagecraft.Block.BlockUpperMantle;
 import at.tyron.vintagecraft.Block.BlockVC;
+import at.tyron.vintagecraft.Block.BlockWoodBucketVC;
 import at.tyron.vintagecraft.Block.Mechanics.BlockAngledGears;
 import at.tyron.vintagecraft.Block.Mechanics.BlockAxle;
 import at.tyron.vintagecraft.Block.Mechanics.BlockBellows;
@@ -37,8 +37,8 @@ import at.tyron.vintagecraft.Block.Organic.BlockTallGrassVC;
 import at.tyron.vintagecraft.Block.Organic.BlockTopSoil;
 import at.tyron.vintagecraft.Block.Organic.BlockVineVC;
 import at.tyron.vintagecraft.Block.Organic.BlockWoodenStairsVC;
-import at.tyron.vintagecraft.Block.Utility.BlockBlastPowderSack;
 import at.tyron.vintagecraft.Block.Utility.BlockAnvilVC;
+import at.tyron.vintagecraft.Block.Utility.BlockBlastPowderSack;
 import at.tyron.vintagecraft.Block.Utility.BlockCarpenterTable;
 import at.tyron.vintagecraft.Block.Utility.BlockCeramicVessel;
 import at.tyron.vintagecraft.Block.Utility.BlockClayVessel;
@@ -51,6 +51,7 @@ import at.tyron.vintagecraft.Block.Utility.BlockOrePile;
 import at.tyron.vintagecraft.Block.Utility.BlockSaltLamp;
 import at.tyron.vintagecraft.Block.Utility.BlockStoneAnvil;
 import at.tyron.vintagecraft.Block.Utility.BlockStonePot;
+import at.tyron.vintagecraft.Block.Utility.BlockStonecutter;
 import at.tyron.vintagecraft.Block.Utility.BlockStove;
 import at.tyron.vintagecraft.Block.Utility.BlockTallMetalMolds;
 import at.tyron.vintagecraft.Block.Utility.BlockToolRack;
@@ -73,6 +74,7 @@ import at.tyron.vintagecraft.Item.ItemRock;
 import at.tyron.vintagecraft.Item.ItemRockTyped;
 import at.tyron.vintagecraft.Item.ItemSaltpeterBlock;
 import at.tyron.vintagecraft.Item.ItemStonePot;
+import at.tyron.vintagecraft.Item.ItemStonecutter;
 import at.tyron.vintagecraft.Item.ItemSubsoil;
 import at.tyron.vintagecraft.Item.ItemTallGrassVC;
 import at.tyron.vintagecraft.Item.ItemTallMetalMold;
@@ -168,11 +170,14 @@ public class BlocksVC {
 	public static BlockContainerVC windmillrotor;
 	
 	public static BlockContainerVC carpenterTable;
+	public static BlockContainerVC stonecutter;
 	
 	public static BlockContainerVC blastpowdersack;
 	public static BlockContainerVC woodbucket;
 	
 	public static Block saltlamp;
+
+
 	
 
 	
@@ -323,6 +328,7 @@ public class BlocksVC {
 		tallmetalmolds = new BlockTallMetalMolds().registerSingleState("tallmetalmolds", ItemTallMetalMold.class);
 		
 		carpenterTable = new BlockCarpenterTable().registerSingleState("carpentertable", ItemCarpenterTable.class);
+		stonecutter = new BlockStonecutter().registerSingleState("stonecutter", ItemStonecutter.class);
 		
 		blastpowdersack = new BlockBlastPowderSack().registerSingleState("blastpowdersack", ItemBlock.class);
 		
